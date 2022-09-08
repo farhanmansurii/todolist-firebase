@@ -50,7 +50,18 @@ const Todo = () => {
   }, [])
   return (
     <>
-      <Container height="100vh" width="360px" bg="#FFCDD2">
+      <Container height="110vh" width="380px" bg="#FFCDD2">
+        <Text
+          fontSize="2xl"
+          fontFamily="monospace"
+          fontWeight="semibold"
+          pt="1.5rem"
+          align="left"
+          mx="0.5rem"
+          color="#4D4141"
+        >
+          Welcome ,Farhan!
+        </Text>
         <form onSubmit={onsubmitHandler}>
           <Input
             variant="unstyled"
@@ -58,24 +69,42 @@ const Todo = () => {
             size="lg"
             fontSize="xl"
             value={inputData}
-            px="2rem"
+            px="1rem"
+            width="90%"
             py="2"
             color="#4D4141"
+            placeholder="Enter a task"
+            _placeholder={{ color: "#4D4141" }}
             onChange={(e) => setInputData(e.target.value)}
-            my="3rem"
+            my="1.5rem"
+            fontFamily="mono"
+            mx="0.5rem"
+            align="center"
           />
         </form>
 
         {todos.map((todo) => (
           <Flex
             key={todo.id}
-            justify="space-evenly"
+            justify="space-between"
             onClick={() => updateTodo(todo)}
+            mx="0.9rem"
+            align="left"
+            fontFamily="mono"
+            bg="#FD7D96"
+            px="2rem"
+            py="0.5rem"
+            mt="2"
+            borderRadius="xl"
           >
             <Text fontSize="xl" as={todo.completed === true ? "s" : ""}>
               {todo.input.inputData}
             </Text>
-            <DeleteIcon onClick={() => deleteTodo(todo.id)} />
+            <DeleteIcon
+              fontSize="xl"
+              mt="1"
+              onClick={() => deleteTodo(todo.id)}
+            />
           </Flex>
         ))}
       </Container>
